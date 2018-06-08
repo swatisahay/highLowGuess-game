@@ -6,7 +6,7 @@ $(function() {
     var message= $("input#coded").val();
     var cryptic= cryptosquare(message);
     $("#output").text(cryptic);
-});
+  });
 });
 // business logic
 var cryptosquare=function(message){
@@ -18,11 +18,18 @@ var cryptosquare=function(message){
   var size = message.length;
   // no.of columns, rows=column+1
   var len =parseInt(Math.sqrt(size));
+  if(size<=2) {
+    return message;
+  }
+  // debugger
+  if(size<=9){
+    len=3;
+  }
   // splitting strings into letter and storing it in array
   var myArray=message.split("");
   // creating rectangular or square array
   var array=new Array(len+1);
- var emptyArray=[];
+  var emptyArray=[];
   var k=0;
   for(var i=0 ; i<len+1; i++){
     array[i]=new Array(len);
@@ -47,11 +54,13 @@ var cryptosquare=function(message){
           coded.push(str);
           k=0;
           str="";
-      }
+        }
 
-       }
-}
-     var encrypted = coded.join(" ");
       }
-return encrypted;
+    }
+
   }
+  coded.push(str);
+  var encrypted = coded.join(" ");
+  return encrypted;
+}
