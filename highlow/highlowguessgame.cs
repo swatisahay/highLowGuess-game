@@ -47,6 +47,12 @@ public class Program
       {
         Console.WriteLine("sad");
       }
+      Console.WriteLine("Great! I guessed your number. Would you like to play again? (Y/N)");
+       game = Console.ReadLine();
+       if(game == "Y" || game == "y")
+       {
+         Main();
+       }
 
     }
 	}
